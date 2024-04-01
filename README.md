@@ -3,9 +3,16 @@
 * ubuntu 
 * Python 3.6+
 * PyTorch 1.1.0+
+* VPN needed or use Mirror
 
+## mirror
+export HF_ENDPOINT=https://hf-mirror.com
 
+## dependicies 
 ```bash
+# soundfile
+apt install libsndfile1 libffi-dev
+
 # python3 
 python3 -m venv .env
 # active
