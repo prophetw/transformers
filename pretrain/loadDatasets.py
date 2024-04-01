@@ -5,9 +5,12 @@ import librosa
 # NLP natural language processing
 from transformers import AutoTokenizer, pipeline, WhisperProcessor, WhisperForConditionalGeneration
 
-processor = WhisperProcessor.from_pretrained("openai/whisper-large-v2")
-model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-large-v2")
+# processor = WhisperProcessor.from_pretrained("openai/whisper-large-v2")
+# model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-large-v2")
 
+
+processor = WhisperProcessor.from_pretrained("openai/whisper-tiny")
+model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-tiny")
 
 # audio
 dataset = load_dataset(
@@ -21,7 +24,7 @@ sample = dataset[2]["audio"]
 # print(dataset)
 audio_sample_rate = sample["sampling_rate"]
 audio_path = sample["path"]
-pprint.pprint(sample)
+pprint.pprint(dataset[2])
 
 
 speech, sample_rate = librosa.load(audio_path, sr=8000)
@@ -31,13 +34,14 @@ speech, sample_rate = librosa.load(audio_path, sr=8000)
 speech_resampled = librosa.resample(speech, orig_sr=sample_rate, target_sr=16000)
 
 input_features = processor(speech_resampled, sampling_rate=16000, return_tensors="pt").input_features 
-pprint.pprint(input_features)
+# pprint.pprint(input_features)
 
 
 
 predicted_ids = model.generate(input_features)
 
 transcription = processor.batch_decode(predicted_ids, skip_special_tokens=True)
+pprint.pprint(transcription)
 
 
 # computer vision
