@@ -5,13 +5,20 @@
 * PyTorch 1.1.0+
 * VPN needed or use Mirror
 
-## mirror
+## mirror 
+> mirror for huggingface
 export HF_ENDPOINT=https://hf-mirror.com
+> mirror for pip
+pip install soundfile -i https://pypi.tuna.tsinghua.edu.cn/simple/
+export PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
 
 ## dependicies 
 ```bash
 # soundfile
 apt install libsndfile1 libffi-dev
+
+# pip 镜像地址
+pip install soundfile -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 # python3 
 python3 -m venv .env
@@ -22,7 +29,7 @@ source .env/bin/activate
 pip freeze > requirements.txt
 
 # install dep
-pip install -r requirements.txt
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 # check your internet connection maybe you need to set proxy
 python -c "from transformers import pipeline; print(pipeline('sentiment-analysis')('we love you'))"

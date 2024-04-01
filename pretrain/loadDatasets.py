@@ -1,17 +1,13 @@
 from datasets import load_dataset, Audio
-
+import soundfile as sf
+import pprint
+import librosa
 # NLP natural language processing
-from transformers import AutoTokenizer, pipeline
+from transformers import AutoTokenizer, pipeline, WhisperProcessor, WhisperForConditionalGeneration
 
-# classifier = pipeline('sentiment-analysis')
-# classifier("We are very happy to show you the 🤗 Transformers library.")
+processor = WhisperProcessor.from_pretrained("openai/whisper-large-v2")
+model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-large-v2")
 
-# dataset = load_dataset("yelp_review_full")
-# print(dataset["train"][100])
-
-# tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-base-cased")
-# encoded_input = tokenizer("Do not meddle in the affairs of wizards, for they are subtle and quick to anger.")
-# print(encoded_input)
 
 # audio
 dataset = load_dataset(
@@ -20,6 +16,42 @@ dataset = load_dataset(
 	split="train",
 	trust_remote_code=True
 	)
-print(dataset)
+
+sample = dataset[2]["audio"]
+# print(dataset)
+audio_sample_rate = sample["sampling_rate"]
+audio_path = sample["path"]
+pprint.pprint(sample)
+
+
+speech, sample_rate = librosa.load(audio_path, sr=8000)
+
+# print(sample_rate)
+# 然后，将音频从8000Hz重采样到16000Hz
+speech_resampled = librosa.resample(speech, orig_sr=sample_rate, target_sr=16000)
+
+input_features = processor(speech_resampled, sampling_rate=16000, return_tensors="pt").input_features 
+pprint.pprint(input_features)
+
+
+
+predicted_ids = model.generate(input_features)
+
+transcription = processor.batch_decode(predicted_ids, skip_special_tokens=True)
+
 
 # computer vision
+
+# 加载音频文件
+# speech, sample_rate = sf.read(audio_path)
+
+# 假设 `speech` 是你的原始音频数据，`sample_rate` 是原始采样率（在这个例子中是8000Hz）
+# 首先，读取你的音频文件
+# speech, sample_rate = librosa.load(audio_path, sr=8000)
+
+# print(sample_rate)
+# 然后，将音频从8000Hz重采样到16000Hz
+# speech_resampled = librosa.resample(speech, orig_sr=sample_rate, target_sr=16000)
+# pprint.pprint(speech_resampled)
+
+# input_features = processor(sample["array"], sampling_rate=sample["sampling_rate"], return_tensors="pt").input_features 
