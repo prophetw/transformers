@@ -11,6 +11,9 @@ python3 -m venv .env
 # active
 source .env/bin/activate
 
+# generate requirements.txt
+pip freeze > requirements.txt
+
 # install dep
 pip install -r requirements.txt
 

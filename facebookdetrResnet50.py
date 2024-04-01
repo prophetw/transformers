@@ -3,7 +3,8 @@ import torch
 from PIL import Image
 import requests
 
-url = "http://images.cocodataset.org/val2017/000000039769.jpg"
+# url = "http://images.cocodataset.org/val2017/000000039769.jpg"
+url = "https://www.jal.co.jp/cn/zhcn/guide-to-japan/experiences/cherry-blossom/cherry-blossom-festivals/index/_jcr_content/root/responsivegrid/sectioncontainer_cop/image_1160525837.coreimg.jpeg/1678081724098.jpeg"
 image = Image.open(requests.get(url, stream=True).raw)
 
 # you can specify the revision tag if you don't want the timm dependency
