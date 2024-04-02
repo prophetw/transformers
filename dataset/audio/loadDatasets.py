@@ -9,8 +9,8 @@ from transformers import AutoTokenizer, pipeline, WhisperProcessor, WhisperForCo
 # model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-large-v2")
 
 
-processor = WhisperProcessor.from_pretrained("openai/whisper-tiny")
-model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-tiny")
+processor = WhisperProcessor.from_pretrained("openai/whisper-small")
+model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-small")
 
 # audio
 dataset = load_dataset(
@@ -18,7 +18,7 @@ dataset = load_dataset(
 	"zh-CN",
 	split="train",
 	trust_remote_code=True
-	)
+)
 
 sample = dataset[2]["audio"]
 # print(dataset)
