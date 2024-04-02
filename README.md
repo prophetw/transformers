@@ -3,13 +3,21 @@
 * ubuntu 
 * Python 3.6+
 * PyTorch 1.1.0+
-* VPN needed or use Mirror
+* VPN needed or use Mirror https://hf-mirror.com/ 
 
 ## mirror 
 > mirror for huggingface
+in bash 
 export HF_ENDPOINT=https://hf-mirror.com
+
+vi ~/.bashrc  ~/.zshrc
+export HF_ENDPOINT=https://hf-mirror.com
+
 > mirror for pip
 pip install soundfile -i https://pypi.tuna.tsinghua.edu.cn/simple/
+export PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
+vi ~/.bashrc  ~/.zshrc
+export HF_ENDPOINT=https://hf-mirror.com
 export PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
 
 ## dependicies 
