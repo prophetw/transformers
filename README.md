@@ -29,9 +29,9 @@ apt install libsndfile1 libffi-dev
 pip install soundfile -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 # python3 
-python3 -m venv .env
+python3 -m venv .venv
 # active
-source .env/bin/activate
+source .venv/bin/activate
 
 # generate requirements.txt
 pip freeze > requirements.txt

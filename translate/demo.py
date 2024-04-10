@@ -9,5 +9,7 @@ def translate(text, model_name):
 if __name__ == "__main__":
     import sys
     text = sys.argv[1]
+    # if not exist text 
+
     model_name = sys.argv[2]
     print(translate(text, model_name))

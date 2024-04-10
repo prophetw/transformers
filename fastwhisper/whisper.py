@@ -6,7 +6,7 @@ from faster_whisper import WhisperModel
 # model_size = "large-v3"
 # model_size = "large-v3"
 # model_size = "large-v3"
-# model_size = "large-v3"
+# model_size = "large-v2"
 model_size = "small"
 
 # Run on GPU with FP16

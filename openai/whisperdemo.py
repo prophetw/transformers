@@ -19,7 +19,7 @@ model = whisper.load_model("small")
 # audioPath = 
 # audioPath = "/root/.cache/huggingface/datasets/downloads/extracted/3e8fd2b4a184c2bec90357f47da393914d54ba89c7f887733ff8e2705be8f6fe/zh-CN~BALANCE/603525386b30c74e5584cd24.wav"
 
-# test_path: "/root/.cache/huggingface/datasets/downloads/extracted/3e8fd2b4a184c2bec90357f47da393914d54ba89c7f887733ff8e2705be8f6fe/zh-CN~BALANCE/603525386b30c74e5584cd24.wav"
+test_path = "/root/.cache/huggingface/datasets/downloads/extracted/3e8fd2b4a184c2bec90357f47da393914d54ba89c7f887733ff8e2705be8f6fe/zh-CN~BALANCE/603525386b30c74e5584cd24.wav"
 #  'transcription': '我的账户还有多少钱呢'
 
 # 'sampling_rate': 8000},
@@ -27,7 +27,7 @@ model = whisper.load_model("small")
 #  'transcription': '我想要查询我的账户余额'}
 
 # 你好我想要更改我的地址
-test_path = "/root/.cache/huggingface/datasets/downloads/extracted/3e8fd2b4a184c2bec90357f47da393914d54ba89c7f887733ff8e2705be8f6fe/zh-CN~ADDRESS/603520926b30c74e5584cc44.wav"
+# test_path = "/root/.cache/huggingface/datasets/downloads/extracted/3e8fd2b4a184c2bec90357f47da393914d54ba89c7f887733ff8e2705be8f6fe/zh-CN~ADDRESS/603520926b30c74e5584cc44.wav"
 
 
 
